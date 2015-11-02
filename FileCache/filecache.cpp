@@ -136,7 +136,7 @@ void FileCache::downloadFile(const QString &url, QObject *receiver, const char *
 	{
 		Downloader *downloader = new Downloader(url, cache);
 		connect(downloader, SIGNAL(finished(QNetworkReply::NetworkError, QString, QString)), receiver, member);
-		connect(downloader, SIGNAL(finished(QNetworkReply::NetworkError, QString, QString)), this, SLOT(onDownloaderFinished(QString)));
+		connect(downloader, SIGNAL(finished(QNetworkReply::NetworkError, QString, QString)), this, SLOT(onDownloaderFinished(QNetworkReply::NetworkError, QString, QString)));
 		downloading_.insert(url, downloader);
 		downloader->run(networkAccessManager_);
 	}
